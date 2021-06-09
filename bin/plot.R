@@ -4,7 +4,8 @@ progress <- read.delim("data/progress",
                        col.names=c("date",
                                    "words",
                                    "lines",
-                                   "paragraphs"))
+                                   "paragraphs",
+                                   "comments"))
 progress$date <- as.Date(progress$date)
 
 png("image/words.png")
@@ -17,4 +18,8 @@ dev.off()
 
 png("image/paragraphs.png")
 ggplot(progress, aes(x=date, y=paragraphs, ymin=0)) + geom_point() + geom_line()
+dev.off()
+
+png("image/comments.png")
+ggplot(progress, aes(x=date, y=comments, ymin=0)) + geom_point() + geom_line()
 dev.off()
